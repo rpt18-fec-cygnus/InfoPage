@@ -7,9 +7,17 @@ app.use(express.static('public'));
 
 app.get('/restaurantInfo', (req, res) => {
   // console.log(getRestaurantByID)
-  getRestaurantByID(33, (data) => {
+  getRestaurantByID(1, (data) => {
     res.send(data);
   })
+  // res.send('fake data');
+})
+
+app.get('/restaurant/:restaurantId', (req, res) => {
+  res.send(req.params)
+  // getRestaurantByID(1, (data) => {
+  //   res.send(data);
+  // })
   // res.send('fake data');
 })
 

@@ -4,9 +4,9 @@
   "description": "FEC Project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "start": "nodemon server/server.js",
-    "build": "webpack -d --watch",
+    "build": "webpack -d --watch && ./node_modules/.bin/babel public/src --out-dir public/test --watch --presets @babel/preset-react",
     "db:setup": "node ./mockData/createData.js"
   },
   "author": "TakTakTaka",
@@ -22,6 +22,7 @@
     "faker": "^4.1.0",
     "jest": "^25.1.0",
     "lorem-ipsum": "^2.0.3",
+    "puppeteer": "^2.1.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
