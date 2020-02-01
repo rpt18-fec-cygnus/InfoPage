@@ -14,10 +14,13 @@ app.get('/restaurantInfo', (req, res) => {
 })
 
 app.get('/restaurant/:restaurantId', (req, res) => {
-  res.send(req.params)
-  // getRestaurantByID(1, (data) => {
-  //   res.send(data);
-  // })
+  //req.params key value pair of restaurantID
+
+  
+  // res.send(req.params.restaurantId)
+  getRestaurantByID(req.params.restaurantId, (data) => {
+    res.send(data);
+  })
   // res.send('fake data');
 })
 

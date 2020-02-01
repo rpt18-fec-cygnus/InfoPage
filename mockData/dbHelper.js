@@ -1,8 +1,15 @@
 const Restaurant = require('./data.js');
 const db = require('./index.js')
+const mongoose = require('mongoose');
 
 var getRestaurantByID = function(search, callback) {
   var query;
+
+  //req.params returns string. Convert search to number if it is a number
+  if(Number(search) !== NaN) {
+    search = Number(search);
+  }
+
   if (typeof(search) === 'string') {
     //if type is string, query with name
     query = {name: search}
