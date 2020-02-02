@@ -15,7 +15,12 @@ class App extends React.Component {
 
   componentDidMount() {
     //get request using axios for restaurant info once component mounts
-    axios.get('/restaurantInfo')
+    // axios.get('/restaurantInfo')
+
+    // const urlParams = new URLSearchParams(this.props.location.search);
+    // console.log('this is urlParams: ', urlParams)
+    
+    axios.get('/restaurant/1')
       .then((res) => {
         this.setState(res.data)
         return res.data

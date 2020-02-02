@@ -6,9 +6,13 @@ var getRestaurantByID = function(search, callback) {
   var query;
 
   //req.params returns string. Convert search to number if it is a number
+  var memSearch = search;
   if(Number(search) !== NaN) {
     search = Number(search);
+  } else {
+    search = memSearch;
   }
+  console.log(search)
 
   if (typeof(search) === 'string') {
     //if type is string, query with name
@@ -24,9 +28,9 @@ var getRestaurantByID = function(search, callback) {
       callback(data);
     })
     .catch(err => console.log(err))
-    .then(() => {
-      mongoose.connection.close();
-    }) 
+    // .then(() => {
+    //   mongoose.connection.close();
+    // }) 
 }
 
 module.exports = {getRestaurantByID}
