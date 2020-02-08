@@ -1,4 +1,4 @@
-// const insertSampleData = require('./seed.js');
+const insertSampleData = require('./seed.js');
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 const faker = require('faker');
 //Run File to make mock data for fake restaurants
@@ -26,7 +26,7 @@ var mendocinoFarms = {
   description: `At Mendocino Farms, we use a fine dining approach to flavor and the freshest Wine Country...`
 }
 
-// insertSampleData(mendocinoFarms);
+insertSampleData(mendocinoFarms);
 
 
 
@@ -48,10 +48,6 @@ for (var i = 2; i < 101; i++) {
     keyDesc: keyDesc,
     description: description
   }
-  
-  // console.log(mockRestaurant);
   //save each to database
-  // insertSampleData(mockRestaurant);
+  insertSampleData(mockRestaurant);
 }
-
-export default mendocinoFarms;

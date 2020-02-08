@@ -12,7 +12,7 @@ var getRestaurantByID = function(search, callback) {
   } else {
     search = memSearch;
   }
-  console.log(search)
+  // console.log(search)
 
   if (typeof(search) === 'string') {
     //if type is string, query with name
@@ -28,13 +28,7 @@ var getRestaurantByID = function(search, callback) {
       callback(data);
     })
     .catch(err => console.log(err))
-    // .then(() => {
-    //   mongoose.connection.close();
-    // }) 
 }
 
 module.exports = {getRestaurantByID}
   
-  // var test = getRestaurantByID('Mendocino Farms', (data) => console.log(data));  
-  // var test = getRestaurantByID(1, (data) => console.log(data));
-
