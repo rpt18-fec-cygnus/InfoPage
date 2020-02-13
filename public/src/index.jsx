@@ -19,9 +19,11 @@ class App extends React.Component {
     //split url by key restaurant
     //if split url length is 1 (didn't split) then get restaurant id 1
     if (window.location.pathname === '/') {
-      var endpoint = '/restaurant/1'
+      var endpoint = 'restaurant/1'
+      console.log(window.location.href);
     } else {
       var endpoint = window.location.pathname;
+      console.log(window.location);
     }
     
     //get request using axios for restaurant info once component mounts
@@ -30,7 +32,7 @@ class App extends React.Component {
     // const urlParams = new URLSearchParams(this.props.location.search);
     // console.log('this is urlParams: ', urlParams)
     
-    axios.get(`http://localhost:7000${endpoint}`)
+    axios.get(`${window.location.href}${endpoint}`)
       .then((res) => {
         this.setState(res.data)
         return res.data
@@ -59,4 +61,4 @@ class App extends React.Component {
 }
 
 // ReactDOM.render( <App sampleData={mendocinoFarms}/>, document.getElementById('root'));
-ReactDOM.render( <App />, document.getElementById('root'));
+ReactDOM.render( <App />, document.getElementById('infoPage'));
