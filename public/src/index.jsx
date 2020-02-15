@@ -14,25 +14,19 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // var url = document.URL;
     // console.log(window.location.pathname)
-    //split url by key restaurant
-    //if split url length is 1 (didn't split) then get restaurant id 1
     if (window.location.pathname === '/') {
-      var endpoint = 'restaurant/1'
+      var endpoint = '/api/restaurant/1'
       console.log(window.location.href);
     } else {
-      var endpoint = window.location.pathname;
+      var endpoint = `/api${window.location.pathname}`;
       console.log(window.location);
     }
     
     //get request using axios for restaurant info once component mounts
-    // axios.get('/restaurantInfo')
 
-    // const urlParams = new URLSearchParams(this.props.location.search);
-    // console.log('this is urlParams: ', urlParams)
-    
-    axios.get(`${window.location.href}${endpoint}`)
+    // axios.get(`http://localhost:7000/${endpoint}`)
+    axios.get(`${endpoint}`)
       .then((res) => {
         this.setState(res.data)
         return res.data
