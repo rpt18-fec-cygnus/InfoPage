@@ -18,8 +18,7 @@ fs.readFile(`${__dirname}/mendocino1.jpg`, function(err, Buffer){
   s3 = new AWS.S3({apiVersion: '2006-03-01'});
   s3.upload(params, function(err, data) {
     console.log(err, data)
-  })
-
+  });
 })
 
 

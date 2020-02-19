@@ -1,8 +1,19 @@
 const Restaurant = require('./data.js');
 const db = require('./index.js')
+const mongoose = require('mongoose');
 
 var getRestaurantByID = function(search, callback) {
   var query;
+
+  //req.params returns string. Convert search to number if it is a number
+  var memSearch = search;
+  if(Number(search) !== NaN) {
+    search = Number(search);
+  } else {
+    search = memSearch;
+  }
+  // console.log(search)
+
   if (typeof(search) === 'string') {
     //if type is string, query with name
     query = {name: search}
@@ -17,13 +28,7 @@ var getRestaurantByID = function(search, callback) {
       callback(data);
     })
     .catch(err => console.log(err))
-    .then(() => {
-      mongoose.connection.close();
-    }) 
 }
 
 module.exports = {getRestaurantByID}
   
-  // var test = getRestaurantByID('Mendocino Farms', (data) => console.log(data));  
-  // var test = getRestaurantByID(1, (data) => console.log(data));
-
