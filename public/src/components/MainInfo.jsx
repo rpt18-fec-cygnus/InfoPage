@@ -81,10 +81,7 @@ class MainInfo extends React.Component {
         </div>
         <div>
           {/* make image source dynamic */}
-          {/* <img src="https://taktaktaka-rpt18-fec-cygnus.s3-us-west-1.amazonaws.com/small_3.png"></img><span>  {this.props.data.reviewCount} Reviews</span> */}
-          {/* <img src="https://taktaktaka-rpt18-fec-cygnus.s3-us-west-1.amazonaws.com/small_5%402x.png"></img><span>  {this.props.data.reviewCount} Reviews</span> */}
           <img className="stars" src={this.createStars()}></img><span>  {this.props.data.reviewCount} Reviews</span>
-          {/* <h4>STAR RATING {this.props.data.rating} {this.props.data.reviewCount} Reviews</h4> */}
         </div>
         <div>
           <span>{this.props.data.cost} . </span><StyledKeyDescription>{this.createDesc()}</StyledKeyDescription>

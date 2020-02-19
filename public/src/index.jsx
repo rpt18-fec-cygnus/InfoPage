@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Button from './components/Button.jsx'
 // import mendocinoFarms from '../../mockData/createData.js'
 import MainInfo from './components/MainInfo.jsx'
+import Description from './components/Description.jsx'
 import axios from 'axios';
 
 
@@ -48,7 +49,11 @@ class App extends React.Component {
           <Button secondary>Share</Button>
           <Button secondary>Save</Button>
         </div>
+        <br></br>
+        <Description desc={this.state.description} />
+        {/* <div class="desc">This is where restaurant description goes!</div> */}
       </div>
+      
       
     )
   }  
