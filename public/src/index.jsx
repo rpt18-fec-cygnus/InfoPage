@@ -13,6 +13,7 @@ class App extends React.Component {
 
     this.state = {}
     this.createReview = this.createReview.bind(this);
+    this.updateReviewScore = this.updateReviewScore.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +44,23 @@ class App extends React.Component {
     console.log(`post a review now for restID: ${restId}`);
   }
 
+  updateReviewScore(restId) {
+    var restId = window.location.href.split('/');
+    restId = Number.isInteger(Number(restId[restId.length - 2])) ? restId[restId.length - 2] : 1;
+    console.log(restId);
+    //make get request to Reviews
+      axios.get('/api/getScore', {params: {uid: restId}})
+      .then(function({data}) {
+        //make patch request to mainInfo Page using score.avg and score.count        
+        var updateInfo = {
+          rating: data[0].avgScore,
+          reviewCount: data[0].reviewCount
+        }
+        axios.patch('/api/updateScore', updateInfo);
+      })
+      .catch((err) => console.log('hello', err));
+  }
+
   render() {
     return (
       <div> 
@@ -54,7 +72,7 @@ class App extends React.Component {
           <Button onClick={() => this.createReview()}><strong>Write a Review</strong></Button>
           <Button secondary>Add Photo</Button>
           <Button secondary>Share</Button>
-          <Button secondary>Save</Button>
+          <Button onClick={() => this.updateReviewScore()} secondary>Save</Button>
         </div>
         <br></br>
         <Description desc={this.state.description} />
