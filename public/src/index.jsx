@@ -12,16 +12,16 @@ class App extends React.Component {
     super(props);
 
     this.state = {}
+    this.createReview = this.createReview.bind(this);
   }
 
   componentDidMount() {
-    // console.log(window.location.pathname)
     if (window.location.pathname === '/') {
       var endpoint = '/api/restaurant/1'
       console.log(window.location.href);
     } else {
       var endpoint = `/api${window.location.pathname}`;
-      console.log(window.location);
+      console.log(window.location.pathname);
     }
     
     //get request using axios for restaurant info once component mounts
@@ -36,6 +36,13 @@ class App extends React.Component {
       // .then((data) => console.log(data.keyDesc))
   }
 
+  createReview() {
+    var restId = window.location.href.split('/');
+    restId = Number.isInteger(Number(restId[restId.length - 2])) ? restId[restId.length - 2] : 1;
+    axios.post('/api/postReview', {uid: restId});
+    console.log(`post a review now for restID: ${restId}`);
+  }
+
   render() {
     return (
       <div> 
@@ -44,7 +51,7 @@ class App extends React.Component {
         {/* <MainInfo data={this.props.sampleData} /> */}
         <MainInfo data={this.state} />
         <div>
-          <Button><strong>Write a Review</strong></Button>
+          <Button onClick={() => this.createReview()}><strong>Write a Review</strong></Button>
           <Button secondary>Add Photo</Button>
           <Button secondary>Share</Button>
           <Button secondary>Save</Button>
