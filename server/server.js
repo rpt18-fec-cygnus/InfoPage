@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 7000;
 const proxy = require('http-proxy-middleware')
-const {getRestaurantByID, getRestaurantByName} = require('../mockData/dbHelper.js');
+const {getRestaurantByID, getRestaurantByName, updateRestScore} = require('../mockData/dbHelper.js');
 const cors = require('cors');
 const morgan = require('morgan');
 
@@ -33,7 +33,9 @@ app.get('/api/restaurantName/:restaurantName', (req, res) => {
 
 app.patch('/api/updateScore', (req, res) => {
   console.log(req.body);
-  res.send('update mongoDB for InfoService')
+  updateRestScore(req.body.query, req.body.updateInfo, (data) => {
+    res.send(data);
+  })
 })
 
 app.listen(port, () => console.log(`Cygnus-Yelp App Listening on port ${port}!`));

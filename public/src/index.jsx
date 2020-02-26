@@ -46,17 +46,21 @@ class App extends React.Component {
 
   updateReviewScore(restId) {
     var restId = window.location.href.split('/');
-    restId = Number.isInteger(Number(restId[restId.length - 2])) ? restId[restId.length - 2] : 1;
+    restId = Number.isInteger(Number(restId[restId.length - 2])) ? Number(restId[restId.length - 2]) : 1;
     console.log(restId);
     //make get request to Reviews
-      axios.get('/api/getScore', {params: {uid: restId}})
+    var query = {uid: restId};
+      axios.get('/api/getScore', {params: query})
       .then(function({data}) {
         //make patch request to mainInfo Page using score.avg and score.count        
         var updateInfo = {
           rating: data[0].avgScore,
           reviewCount: data[0].reviewCount
         }
-        axios.patch('/api/updateScore', updateInfo);
+        axios.patch('/api/updateScore', {updateInfo, query})
+          .then(function({data}) {
+            console.log('updated with following: ', data)
+          })
       })
       .catch((err) => console.log('hello', err));
   }

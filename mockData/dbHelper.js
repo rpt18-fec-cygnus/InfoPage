@@ -42,8 +42,16 @@ var getRestaurantByName = function (search, callback) {
     .then((data) => {
       callback(data);
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 }
 
-module.exports = {getRestaurantByID, getRestaurantByName}
+var updateRestScore = function (query, update, callback) {
+  Restaurant.updateOne(query, update)
+    .then((data) => {
+      callback(data);
+    })
+    .catch(err => console.log(err));
+} 
+
+module.exports = {getRestaurantByID, getRestaurantByName, updateRestScore}
   
