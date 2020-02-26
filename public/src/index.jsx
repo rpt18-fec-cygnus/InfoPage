@@ -51,15 +51,19 @@ class App extends React.Component {
     //make get request to Reviews
     var query = {uid: restId};
       axios.get('/api/getScore', {params: query})
-      .then(function({data}) {
+      .then(({data}) => {
         //make patch request to mainInfo Page using score.avg and score.count        
         var updateInfo = {
           rating: data[0].avgScore,
           reviewCount: data[0].reviewCount
         }
         axios.patch('/api/updateScore', {updateInfo, query})
-          .then(function({data}) {
+          .then(({data}) => {
             console.log('updated with following: ', data)
+            this.setState({
+              rating: updateInfo.rating,
+              reviewCount: updateInfo.reviewCount
+            })
           })
       })
       .catch((err) => console.log('hello', err));
