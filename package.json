@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "build": "webpack -d --watch && ./node_modules/.bin/babel public/src --out-dir public/test --watch --presets @babel/preset-react",
     "db:setup": "node ./mockData/createData.js"
   },

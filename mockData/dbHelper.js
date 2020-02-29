@@ -30,5 +30,28 @@ var getRestaurantByID = function(search, callback) {
     .catch(err => console.log(err))
 }
 
-module.exports = {getRestaurantByID}
+var getRestaurantByName = function (search, callback) {
+    // var search = "Mendocino_Farms"
+    //search will always be a string
+    //use regex to replace all instances of _ with space
+    var queryName = search.replace(/_/gi, ' ')
+    query = {name: queryName}
+    console.log(queryName)
+    //search with query object
+    Restaurant.findOne(query)
+    .then((data) => {
+      callback(data);
+    })
+    .catch(err => console.log(err));
+}
+
+var updateRestScore = function (query, update, callback) {
+  Restaurant.updateOne(query, update)
+    .then((data) => {
+      callback(data);
+    })
+    .catch(err => console.log(err));
+} 
+
+module.exports = {getRestaurantByID, getRestaurantByName, updateRestScore}
   
