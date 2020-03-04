@@ -1,20 +1,15 @@
-// import Enzyme from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16';
-
-// Enzyme.configure({ adapter: new Adapter() });
-
-// import React from 'react';
+import React from 'react';
 // var React = require('react')
-// import Enzyme { shallow } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 // import * as Enzyme from 'enzyme' 
-// import Adapter from 'enzyme-adapter-react-16';
-// import mainInfo from '../public/dist/bundle.js'
+import Adapter from 'enzyme-adapter-react-16';
+// import MainInfo from '../public/src/components/MainInfo.jsx'
 
-var React = require('react');
-var Enzyme = require('enzyme');
-var shallow = Enzyme.shallow;
-var Adapter = require('enzyme-adapter-react-16');
-var MainInfo = require('../public/test/components/MainInfo.js');
+// var React = require('react');
+// var Enzyme = require('enzyme');
+// var shallow = Enzyme.shallow;
+// var Adapter = require('enzyme-adapter-react-16');
+// var MainInfo = require('../public/test/components/MainInfo.js');
 
 
 
