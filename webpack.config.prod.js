@@ -1,13 +1,15 @@
 const path = require('path');
 const src_dir = path.join(__dirname, '/public', '/src');
 const dist_dir = path.join(__dirname, 'public', 'dist');
+var webpack = require('webpack');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   mode: 'production',
   entry: path.join(src_dir, 'index.jsx'),
   output: {
     path: dist_dir,
-    filename: 'bundle.js',
+    filename: 'miniBundle.js',
   },
   module: {
     rules: [
@@ -22,5 +24,6 @@ module.exports = {
         }
       }
     ],
-  }
+  },
+  plugins: [new CompressionPlugin()]
 }
