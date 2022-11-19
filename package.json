@@ -29,7 +29,7 @@
     "lorem-ipsum": "^2.0.3",
     "puppeteer": "^2.1.0",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "axios": "^0.19.2",
